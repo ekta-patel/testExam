@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">ExamEngineerAI</string>
-    <string name="cd_selected">selected</string>
-    <string name="retry">Retry</string>
-    <string name="value_selected">%1$d Selected</string>
-</resources>
