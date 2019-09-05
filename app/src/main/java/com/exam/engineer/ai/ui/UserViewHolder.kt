@@ -15,9 +15,9 @@ import com.exam.engineer.ai.util.GlideApp
  * A RecyclerView ViewHolder that displays a User post.
  */
 class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    private val title: TextView = view.findViewById(R.id.tv_title)
+    private val title: TextView = view.findViewById(R.id.tvTitle)
     private val ivUser: ImageView = view.findViewById(R.id.ivUser)
-    private val list: RecyclerView = view.findViewById(R.id.list)
+    private val rvSubList: RecyclerView = view.findViewById(R.id.rvSubList)
 
     fun bind(users: UserApi.ListingResponse.Data.Users?) {
 
@@ -28,7 +28,7 @@ class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 .circleCrop()
                 .into(ivUser)
 
-        list.layoutManager = GridLayoutManager(itemView.context, 2).apply {
+        rvSubList.layoutManager = GridLayoutManager(itemView.context, 2).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
                     return when {
@@ -41,7 +41,8 @@ class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 }
             }
         }
-        list.adapter = UsersPostAdapter(users?.items)
+        rvSubList.isNestedScrollingEnabled = false
+        rvSubList.adapter = UsersPostAdapter(users?.items)
     }
 
     companion object {
